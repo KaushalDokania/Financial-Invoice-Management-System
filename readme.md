@@ -1,0 +1,1 @@
+This is the readme file for the project fin_inv_system
