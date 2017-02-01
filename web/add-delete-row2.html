@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>New Invoice</title>
+	
+	<script>
+		var items=2;
+		var x;
+		function addItem()
+		{
+			var x=document.getElementById('t1');
+			   // deep clone the targeted row
+			var new_row = x.rows[1].cloneNode(true);
+			   // get the total number of rows
+			var len = x.rows.length;
+			   // set the innerHTML of the first row 
+			new_row.cells[0].innerHTML = len;
+
+			   // grab the input from the first cell and update its ID and value
+			var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+			inp1.id += len;
+			inp1.value = '';
+			inp1.name = 'item' + len;
+			window.alert(inp1.name);
+
+			   // grab the input from the first cell and update its ID and value
+			var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+			inp2.id += len;
+			inp2.value = '';
+			inp2.name = 'qty' + len;
+			
+			var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
+			inp3.id += len;
+			inp3.value = '';
+			inp3.name = 'price' + len;
+			
+			var inp4 = new_row.cells[4].getElementsByTagName('input')[0];
+			inp4.id += len;
+			inp4.value = '';
+			inp4.name = 'amt' + len;
+
+			   // append the new row to the table
+			x.appendChild( new_row );
+		}
+		function deleteItem(row)
+		{
+			var i=row.parentNode.parentNode.rowIndex;
+			document.getElementById('t1').deleteRow(i);
+		}
+	</script>
+	</head>
+        <body>
+		<form method="GET">
+			<table width=900 border=2 cellspacing=0 cellpadding=8 id="t1">
+				<tr id="row0">
+					<th width=50>S.No.</th>
+					<th width=200>Item Name</th>
+					<th width=200>Quantity</th>
+					<th width=200>Price</th>
+					<th width=200>Amount</th>
+					<th width=30></th>
+				</tr>
+				<tr id="row1">
+					<td>1</td>
+					<td><input type="text" name="item1"/></td>
+					<td><input type="text" name="qty1"/></td>
+					<td><input type="text" name="price1"/></td>
+					<td><input type="text" name="amt1"/></td>
+					<td><input type="button" value="X" onclick="deleteItem(this)"/></td>
+				</tr>		
+			</table>
+			<table width=900 cellspacing=0 cellpadding=8>
+				<tr>
+					<td width=50></td>
+					<td width=200><input type="button" value="Add Item" onclick="addItem()"/></td>
+					<td width=200></td>
+					<td width=200>Total Amount</td>
+					<td width=200>&nbsp;&nbsp;&nbsp;<input type="text"/></td>
+					<td width=30></td>
+				</tr>
+			</table>
+			<input type="submit"/>
+		</form>
+		
+	</body>
+</html>

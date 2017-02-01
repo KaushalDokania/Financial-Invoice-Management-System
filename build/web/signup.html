@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>New Registration</title>
+        <script>
+	function validateEmail()
+	{
+		var x = document.forms["myForm"]["email"].value;
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		if(x.match(mailformat))
+		{
+			return true;
+		}
+		else
+		{
+			alert("You have enetered invalid email address");
+			return false;	
+		}
+	}
+	//checking wheteher the fields are empty or not on pressing the submit button
+	function validateForm()
+	{
+		var a = document.forms["myForm"]["name"].value;
+		var b = document.forms["myForm"]["email"].value;
+                var c = document.forms["myForm"]["passwd"].value;
+                var d = document.forms["myForm"]["sq"].value;
+                var e = document.forms["myForm"]["sqans"].value;
+		
+		if((a==null || a=="")&&(b==null || b=="")&&(c==null || c=="")&&(d==null || d=="")&&(e==null || e==""))
+		{
+			alert("All fields are blank");
+			document.forms["myForm"]["name"].focus();	//to highlight the field
+			return false;
+		}
+		if(a==null || a=="")
+		{
+			alert("Name missing");
+			document.forms["myForm"]["name"].focus();	//to highlight the field
+			return false;
+		}
+		if(b==null || b=="")
+		{
+			alert("Email missing");
+			document.forms["myForm"]["email"].focus();	//to highlight the field
+			return false;
+		}
+                if(c==null || c=="")
+		{
+			alert("Password missing");
+			document.forms["myForm"]["passwd"].focus();	//to highlight the field
+			return false;
+		}
+                if(d==null || d=="")
+		{
+			alert("Sequirity Answer missing");
+			document.forms["myForm"]["sq"].focus();	//to highlight the field
+			return false;
+		}
+                if(e==null || e=="")
+		{
+			alert("Security Answer missing");
+			document.forms["myForm"]["sqans"].focus();	//to highlight the field
+			return false;
+		}
+	}
+	
+	//Displayinig a message while reseting
+	function resetting()
+	{
+		alert("Refreshing every field");
+	}
+	</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>New Registration : </h2>
+		<form name="myForm" method="post" action="Registration" onreset="resetting()" onsubmit="return validateForm();">
+		<table border=0 width=50%>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+                        <tr>
+				<td>Email:</td>
+				<td><input type="text" name="email" onblur="validateEmail()"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>
+                        <tr>
+				<td>Address: </td>
+                                <td><textarea name="add" rows="5" cols="50"></textarea></td>
+			</tr>
+                        <tr>
+				<td>DOB:</td>
+				<td><input type="date" name="dob"></td>
+			</tr>
+                        <tr>
+				<td>Contact no :</td>
+				<td><input type="text" name="ph" value="+91"></td>
+			</tr>
+			<tr>
+				<td>Security Question :</td>
+				<td>
+					<select name="sq">
+						<option value="null">----Select-----</option>
+						<option value="pet_name">Pet Name</option>
+						<option value="Birthday">Birthday</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Security Answer :</td>
+				<td><input type="text" name="sqans"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"></td>
+				<td><input type="reset" value="Refresh"></td>
+			</tr>
+		</table>
+		</form>
+    </body>
+</html>
